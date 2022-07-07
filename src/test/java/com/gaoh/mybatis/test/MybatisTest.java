@@ -109,4 +109,16 @@ public class MybatisTest {
     List<Paper> papers = mapper.selectByName(paperModel);
     System.out.println(papers);
   }
+
+
+  @Test
+  void cache() {
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+    PaperMapper mapper = sqlSession.getMapper(PaperMapper.class);
+    Paper paperModel = new Paper();
+    paperModel.setId(1);
+    paperModel = mapper.selectById(paperModel);
+    paperModel = mapper.selectById(paperModel);
+    System.out.println(paperModel);
+  }
 }
