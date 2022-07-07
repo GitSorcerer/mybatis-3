@@ -94,6 +94,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
   private MapperMethodInvoker cachedInvoker(Method method) throws Throwable {
     try {
       return MapUtil.computeIfAbsent(methodCache, method, m -> {
+        //判断接口是否有默认实现
         if (m.isDefault()) {
           try {
             if (privateLookupInMethod == null) {
