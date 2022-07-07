@@ -34,6 +34,7 @@ import org.apache.ibatis.session.RowBounds;
 
 /**
  * @author Clinton Begin
+ * 封装了JDBC Statement操作，负责对JDBC statement 的操作，如设置参数、将Statement结果集转换成List集合
  */
 public class SimpleStatementHandler extends BaseStatementHandler {
 

@@ -129,6 +129,7 @@ public class MapperAnnotationBuilder {
           parseResultMap(method);
         }
         try {
+          //把方法解析成MappedStatement
           parseStatement(method);
         } catch (IncompleteElementException e) {
           configuration.addIncompleteMethod(new MethodResolver(this, method));

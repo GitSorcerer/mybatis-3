@@ -53,9 +53,9 @@ public class SqlSessionFactoryBuilder {
     } finally {
       ErrorContext.instance().reset();
       try {
-      	if (reader != null) {
-      	  reader.close();
-      	}
+        if (reader != null) {
+          reader.close();
+        }
       } catch (IOException e) {
         // Intentionally ignore. Prefer previous error.
       }
@@ -74,8 +74,17 @@ public class SqlSessionFactoryBuilder {
     return build(inputStream, null, properties);
   }
 
+  /**
+   * 构造方法最终都会调用本方法（配置文件为Reader时会调用本方法，还有一个InputStream方法与此对应）
+   *
+   * @param inputStream
+   * @param environment
+   * @param properties
+   * @return
+   */
   public SqlSessionFactory build(InputStream inputStream, String environment, Properties properties) {
     try {
+      //通过XMLConfigBuilder解析配置文件，解析的配置相关信息都会封装为一个Configuration对象
       XMLConfigBuilder parser = new XMLConfigBuilder(inputStream, environment, properties);
       return build(parser.parse());
     } catch (Exception e) {
@@ -83,9 +92,9 @@ public class SqlSessionFactoryBuilder {
     } finally {
       ErrorContext.instance().reset();
       try {
-      	if (inputStream != null) {
-      	  inputStream.close();
-      	}
+        if (inputStream != null) {
+          inputStream.close();
+        }
       } catch (IOException e) {
         // Intentionally ignore. Prefer previous error.
       }

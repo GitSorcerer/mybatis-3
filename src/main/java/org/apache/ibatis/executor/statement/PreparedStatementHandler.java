@@ -65,10 +65,20 @@ public class PreparedStatementHandler extends BaseStatementHandler {
     return resultSetHandler.handleResultSets(ps);
   }
 
+  /**
+   * 执行JDBC的相关操作
+   * @param statement
+   * @param <E>
+   * @return
+   * @throws SQLException
+   */
   @Override
   public <E> Cursor<E> queryCursor(Statement statement) throws SQLException {
+    //调用原生sql的处理器
     PreparedStatement ps = (PreparedStatement) statement;
+    //发出原生sql命令
     ps.execute();
+    //采用ResultHandler结果处理器对结果集封装
     return resultSetHandler.handleCursorResultSets(ps);
   }
 

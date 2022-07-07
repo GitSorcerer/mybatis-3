@@ -43,9 +43,15 @@ public class MapperProxyFactory<T> {
     return methodCache;
   }
 
+  /**
+   * 生成动态代理对象，实质上拿到的mapper是MapperProxy<T>代理对象
+   *
+   * @param mapperProxy
+   * @return
+   */
   @SuppressWarnings("unchecked")
   protected T newInstance(MapperProxy<T> mapperProxy) {
-    return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[] { mapperInterface }, mapperProxy);
+    return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[]{mapperInterface}, mapperProxy);
   }
 
   public T newInstance(SqlSession sqlSession) {

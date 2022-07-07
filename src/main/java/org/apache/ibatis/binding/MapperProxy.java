@@ -33,6 +33,7 @@ import org.apache.ibatis.util.MapUtil;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
+ * 对Mapper进行动态代理
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 

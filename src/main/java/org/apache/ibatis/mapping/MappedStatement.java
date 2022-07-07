@@ -30,6 +30,7 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Clinton Begin
+ * 一个sql语句对应一个MappedStatment
  */
 public final class MappedStatement {
 
@@ -177,8 +178,7 @@ public final class MappedStatement {
     /**
      * Resul sets.
      *
-     * @param resultSet
-     *          the result set
+     * @param resultSet the result set
      * @return the builder
      * @deprecated Use {@link #resultSets}
      */

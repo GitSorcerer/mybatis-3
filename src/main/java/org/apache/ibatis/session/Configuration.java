@@ -706,9 +706,11 @@ public class Configuration {
     } else {
       executor = new SimpleExecutor(this, transaction);
     }
+    //Mybatis默认开启缓存
     if (cacheEnabled) {
       executor = new CachingExecutor(executor);
     }
+    //执行拦截器
     executor = (Executor) interceptorChain.pluginAll(executor);
     return executor;
   }
