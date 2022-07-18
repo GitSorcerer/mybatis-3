@@ -101,6 +101,7 @@ public class XMLMapperBuilder extends BaseBuilder {
       bindMapperForNamespace();
     }
 
+    //处理解析异常的
     parsePendingResultMaps();
     parsePendingCacheRefs();
     parsePendingStatements();
