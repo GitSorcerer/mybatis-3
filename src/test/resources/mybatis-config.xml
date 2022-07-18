@@ -33,9 +33,21 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="mybatis/BlogsMapper.xml"/>
-    <mapper resource="mybatis/PaperMapper.xml"/>
-    <!--<package name="org.apache.ibatis.test"/>-->
-    <!--<package name="com.gaoh.mybatis.mapper"/>-->
+    <!--  package  -->
+    <!--    <package name="com.gaoh.mybatis.mapper"/>-->
+
+    <!--  resource  -->
+    <!--    <mapper resource="mybatis/BlogsMapper.xml"/>-->
+    <!--    <mapper resource="mybatis/PaperMapper.xml"/>-->
+
+    <!--  class  -->
+    <!--    <mapper class="com.gaoh.mybatis.mapper.BlogsMapper"/>-->
+    <!--    <mapper class="com.gaoh.mybatis.mapper.PaperMapper"/>-->
+
+    <!--  url   -->
+    <!--  mapper的绝对路径  -->
+    <mapper url="file:///home/project/java/stu/mybatis-3/src/test/resources/com/gaoh/mybatis/mapper/BlogsMapper.xml"/>
+    <mapper url="file:///home/project/java/stu/mybatis-3/src/test/resources/com/gaoh/mybatis/mapper/PaperMapper.xml"/>
+
   </mappers>
 </configuration>
