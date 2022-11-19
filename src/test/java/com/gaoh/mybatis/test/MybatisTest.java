@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author gaoh
@@ -38,13 +39,26 @@ public class MybatisTest {
   }
 
   @Test
-  public void test() {
-
+  public void selectAll() {
     SqlSession sqlSession = sqlSessionFactory.openSession();
-
     Object o = sqlSession.selectList("com.gaoh.mybatis.mapper.BlogsMapper.selectAll");
     System.out.println(o);
 
+  }
+
+  @Test
+  void insert() {
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+    BlogsMapper mapper = sqlSession.getMapper(BlogsMapper.class);
+    Blogs blogs = new Blogs("Java", String.valueOf(System.currentTimeMillis()));
+    int insert = mapper.insert(blogs);
+    System.out.println(insert + "-" + blogs.getId());
+    /*try {
+      TimeUnit.MINUTES.sleep(1);
+      sqlSession.commit();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }*/
   }
 
   @Test
@@ -55,13 +69,13 @@ public class MybatisTest {
 
 
     Blogs blogs = new Blogs();
-    blogs.setId(1);
+    blogs.setId(1L);
     blogs = mapper.selectById(blogs);
     System.out.println(blogs);
-    blogs.setId(2);
+    blogs.setId(2L);
     blogs = mapper.selectById(blogs);
     System.out.println(blogs);
-    blogs.setId(2);
+    blogs.setId(2L);
     blogs = mapper.selectById(blogs);
     System.out.println(blogs);
   }

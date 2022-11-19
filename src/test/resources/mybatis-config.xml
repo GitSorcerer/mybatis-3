@@ -22,7 +22,14 @@
 
   <environments default="development">
     <environment id="development">
-      <transactionManager type="JDBC"/>
+      <!--      使用了 JDBC 的提交和回滚(使用事务)   -->
+      <!--<transactionManager type="JDBC">
+        <property name="skipSetAutoCommitOnClose" value="true"/>
+      </transactionManager>-->
+      <!--  让容器来管理事务的整个生命周期    -->
+      <transactionManager type="MANAGED">
+        <property name="closeConnection" value="true"/>
+      </transactionManager>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url"
@@ -34,7 +41,7 @@
   </environments>
   <mappers>
     <!--  package  -->
-    <!--    <package name="com.gaoh.mybatis.mapper"/>-->
+    <package name="com.gaoh.mybatis.mapper"/>
 
     <!--  resource  -->
     <!--    <mapper resource="mybatis/BlogsMapper.xml"/>-->
@@ -46,8 +53,8 @@
 
     <!--  url   -->
     <!--  mapper的绝对路径  -->
-    <mapper url="file:///home/project/java/stu/mybatis-3/src/test/resources/com/gaoh/mybatis/mapper/BlogsMapper.xml"/>
-    <mapper url="file:///home/project/java/stu/mybatis-3/src/test/resources/com/gaoh/mybatis/mapper/PaperMapper.xml"/>
+    <!--    <mapper url="file:///home/project/java/stu/mybatis-3/src/test/resources/com/gaoh/mybatis/mapper/BlogsMapper.xml"/>-->
+    <!--    <mapper url="file:///home/project/java/stu/mybatis-3/src/test/resources/com/gaoh/mybatis/mapper/PaperMapper.xml"/>-->
 
   </mappers>
 </configuration>

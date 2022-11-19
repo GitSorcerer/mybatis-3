@@ -1,6 +1,7 @@
 package com.gaoh.mybatis.mapper;
 
 import com.gaoh.mybatis.model.Blogs;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,5 +17,7 @@ public interface BlogsMapper {
   List<Blogs> selectByTitle(Blogs blogs);
 
   Blogs selectById(Blogs blogs);
+
+  int insert(@Param("blogs") Blogs blogs);
 
 }

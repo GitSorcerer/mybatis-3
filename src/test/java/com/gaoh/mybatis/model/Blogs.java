@@ -18,25 +18,29 @@ package com.gaoh.mybatis.model;
 
 public class Blogs {
 
-  private int id;
+  private Long id;
   private String title;
   private String author;
 
   public Blogs() {
   }
 
-  public Blogs(int id, String title, String author ) {
+  public Blogs(Long id, String title, String author ) {
     this();
     this.id = id;
     this.title = title;
     this.author = author;
   }
 
-  public int getId() {
+  public Blogs(String title, String author) {
+    this(null, title, author);
+  }
+
+  public Long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
